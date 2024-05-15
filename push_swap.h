@@ -6,7 +6,7 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 20:01:36 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/15 12:07:44 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/15 13:52:25 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	sort_10(t_node **head_a, t_node **head_b);
 
 //utils:
 
-void	check_dupe(t_node *head);
+void	check_dupe(t_node *head, int argc);
 void	create_a(int argc, char *argv[], t_node **head);
 void	check_input(int argc, char *argv[]);
 
-void	freelinkedlistandexit(t_node *head);
+void	freelinkedlistandexit(t_node *head, char c);
 void	exitwitherror(void);
 void	free_double_array(char **array);
 void	check_int(long i);

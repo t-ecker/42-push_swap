@@ -6,13 +6,13 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 20:06:14 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/14 20:09:05 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/15 13:53:31 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	freelinkedlistandexit(t_node *head)
+void	freelinkedlistandexit(t_node *head, char c)
 {
 	t_node	*temp;
 
@@ -22,6 +22,8 @@ void	freelinkedlistandexit(t_node *head)
 		head = head->next;
 		free(temp);
 	}
+	if (c == '1')
+		write(STDERR_FILENO, "Error\n", 6);
 	exit(0);
 }
 

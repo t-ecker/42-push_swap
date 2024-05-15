@@ -6,13 +6,13 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:54:26 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/15 11:53:39 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/15 13:53:08 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_dupe(t_node *head)
+void	check_dupe(t_node *head, int argc)
 {
 	t_node	*temp;
 	t_node	*current;
@@ -20,6 +20,8 @@ void	check_dupe(t_node *head)
 	current = NULL;
 	temp = NULL;
 	current = head;
+	if (argc < 2)
+        freelinkedlistandexit(head, '1');
 	while (current != NULL)
 	{
 		temp = head;
@@ -28,8 +30,7 @@ void	check_dupe(t_node *head)
 			if ((temp->value == current->value && temp != current)
 				|| (current->value < INT_MIN) || (current->value > INT_MAX))
 			{
-				write(STDERR_FILENO, "Error\n", 6);
-				freelinkedlistandexit(head);
+				freelinkedlistandexit(head, '1');
 			}
 			temp = temp->next;
 		}
@@ -74,7 +75,7 @@ void	check_input(int argc, char *argv[])
 	i = 0;
 	while (++i < argc)
 	{
-		if (argc < 2 || argv[i][0] == '\0')
+		if(argv[i][0] == '\0')
 			exitwitherror();
 		j = 0;
 		while (argv[i][j])

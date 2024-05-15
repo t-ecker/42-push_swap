@@ -6,7 +6,7 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:54:45 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/14 19:27:05 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/15 13:52:39 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ void	pos(t_node *head)
 		temp = head;
 		while (temp != NULL)
 		{
-			if ((temp->value == current->value && temp != current)
-				|| (current->value < INT_MIN) || (current->value > INT_MAX))
-			{
-				write(STDERR_FILENO, "Error\n", 6);
-				freelinkedlistandexit(head);
-			}
 			if (temp->value < current->value)
 				current->pos++;
 			temp = temp->next;
@@ -49,9 +43,10 @@ int	main(int argc, char *argv[])
 	head_a = NULL;
 	check_input(argc, argv);
 	create_a(argc, argv, &head_a);
+	check_dupe(head_a, argc);
 	pos(head_a);
 	sort(&head_a, &head_b);
-	freelinkedlistandexit(head_a);
-	freelinkedlistandexit(head_b);
+	freelinkedlistandexit(head_a, '0');
+	freelinkedlistandexit(head_b, '0');
 	return (0);
 }

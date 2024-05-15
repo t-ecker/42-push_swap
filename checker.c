@@ -6,7 +6,7 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:29:01 by tomecker          #+#    #+#             */
-/*   Updated: 2024/05/15 12:08:24 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/15 13:46:36 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char *argv[])
 	head_a = NULL;
 	check_input(argc, argv);
 	create_a(argc, argv, &head_a);
-	check_dupe(head_a);
+	check_dupe(head_a, argc);
 	get_operations(&buffer);
 	process_operations(buffer, &head_a, &head_b);
 	if (check_sorted(head_a) == 1 && head_b == NULL)
