@@ -6,7 +6,7 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:54:26 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/16 11:45:35 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:09:52 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	check_dupe(t_node *head)
 		temp = head;
 		while (temp != NULL)
 		{
-			if ((temp->value == current->value && temp != current)
-				|| (current->value < INT_MIN) || (current->value > INT_MAX))
+			if ((temp->value == current->value && temp != current))
 			{
 				freelinkedlistandexit(head, '1');
 			}
