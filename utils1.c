@@ -6,7 +6,7 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:54:26 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/15 14:39:16 by tecker           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:45:35 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void	check_input(int argc, char *argv[])
 	i = 0;
 	while (++i < argc)
 	{
-		if (argv[i][0] == '\0')
-			exitwitherror();
 		j = 0;
 		while (argv[i][j])
 		{
@@ -85,11 +83,7 @@ void	check_input(int argc, char *argv[])
 					&& (argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9')))
 					exitwitherror();
 			}
-			if ((argv[i][j] == ' ') && (argv[i][j + 1] == ' '))
-				exit(0);
 			j++;
 		}
-		if ((argv[i][ft_strlen(argv[i]) - 1] == ' ') || (argv[i][0] == ' '))
-			exit(0);
 	}
 }
