@@ -1,77 +1,81 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tecker <tecker@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/13 20:06:54 by tecker            #+#    #+#              #
-#    Updated: 2024/05/15 12:17:28 by tecker           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# GREEN = \033[0;32m
-# NC = \033[0m
-
-PUSHSWAP = push_swap
+NAME = push_swap
 CHECKER = checker
+
+LIBFT_REPO = https://github.com/t-ecker/42-Libft.git
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
 CFLAGS = -Wall -Werror -Wextra
 
 
-OBJ =		push_swap.o \
-			algo.o \
-			utils1.o \
-			utils2.o \
-			utils3.o \
-			./operations/push.o \
-			./operations/swap.o \
-			./operations/rotate.o \
+SRC =		./src/main.c \
+			./src/algo.c \
+			./src/utils1.c \
+			./src/utils2.c \
+			./src/utils3.c \
+			./src/operations/push.c \
+			./src/operations/swap.c \
+			./src/operations/rotate.c
 
-OBJ_BONUS =	checker.o \
-			utils1.o \
-			utils2.o \
-			utils3.o \
-			./operations/push.o \
-			./operations/swap.o \
-			./operations/rotate.o \
+SRC_BONUS =	./src/checker.c \
+			./src/utils1.c \
+			./src/utils2.c \
+			./src/utils3.c \
+			./src/operations/push.c \
+			./src/operations/swap.c \
+			./src/operations/rotate.c
 
-all: $(PUSHSWAP)
-# @clear
-# @echo "$(GREEN)Build push_swap successfully.$(NC)"
+OBJ_DIR = ./obj
 
-$(PUSHSWAP): $(LIBFT) $(OBJ)
-	@cc $(CFLAGS) $(OBJ) $(LIBFT) -o $(PUSHSWAP)
+OBJ_FILES		=	$(patsubst ./src/%.c, $(OBJ_DIR)/%.o, $(SRC))
+OBJ_FILES_BONUS	=	$(patsubst ./src/%.c, $(OBJ_DIR)/%.o, $(SRC_BONUS))
 
+all: $(NAME)
+	clear;
+	@$(MAKE) loading
+	clear;
 
-bonus:	$(CHECKER)
-# @clear
-# @echo "$(GREEN)Build checker successfully.$(NC)"
+$(NAME): $(LIBFT) $(OBJ_FILES) 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBFT)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(LIBFT):
+$(LIBFT):	$(LIBFT_DIR)
 	@make -C $(LIBFT_DIR)
 
-$(CHECKER): $(LIBFT) $(OBJ_BONUS)
-	@cc $(CFLAGS) $(LIBFT) $(OBJ_BONUS) -o $(CHECKER)
+$(LIBFT_DIR):
+	@echo "\n\033[33mAdding Libft submodule...\033[0m"
+	touch .gitmodules
+	git submodule add -f "$(LIBFT_REPO)" $(LIBFT_DIR)
+	@echo "\033[32mLibft submodule added successfully.\033[0m"
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: ./src/%.c | $(OBJ_DIR)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus:	$(CHECKER)
+	clear;
+	@$(MAKE) loading
+	clear;
+
+$(CHECKER):	$(LIBFT) $(OBJ_FILES_BONUS) 
+	$(CC) $(CFLAGS) -o $(CHECKER) $(OBJ_FILES_BONUS) $(LIBFT)
 
 clean:
-	@rm -f *.o 
-	@rm -f ./operations/*.o
+	rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_DIR)
-# @clear
-# @echo "$(GREEN)Cleaned successfully$(NC)"
-	
+
 fclean: clean
-	@rm -f $(PUSHSWAP) $(CHECKER)
+	rm -f $(NAME) $(CHECKER)
 	@make fclean -C $(LIBFT_DIR)
-# @clear
-# @echo "$(GREEN)Fully cleaned$(NC)"
 
 re: fclean all
 
-.PHONY: all clean bonus fclean re
+loading:
+	@for i in {1..42}; do \
+		printf '%s' "█"; \
+		sleep 0.01; \
+	done
 
+.PHONY: all clean fclean re loading bonus

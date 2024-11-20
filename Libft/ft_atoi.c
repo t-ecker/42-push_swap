@@ -6,17 +6,17 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:32:03 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/13 16:43:46 by tecker           ###   ########.fr       */
+/*   Updated: 2024/03/11 17:29:40 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int		i;
-	int		minus;
-	long	number;
+	int	i;
+	int	minus;
+	int	number;
 
 	i = 0;
 	minus = 1;

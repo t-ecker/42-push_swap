@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 15:18:37 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/14 18:02:24 by tecker           ###   ########.fr       */
+/*   Created: 2024/03/14 15:42:34 by tecker            #+#    #+#             */
+/*   Updated: 2024/03/15 11:13:54 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-// # include <stdio.h>
-# include <fcntl.h>
-# include <unistd.h>
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*list;
+	t_list	*node;
+	t_list	*temp;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
-
-char	*get_next_line(int fd);
-char	*ft_strjoin_gnl(char *s1, char *s2);
-char	*ft_strdup_gnl(char *s1);
-char	*ft_strchr_gnl(const char *src, int c);
-char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
-
-#endif
+	list = NULL;
+	while (lst)
+	{
+		temp = (*f)(lst->content);
+		node = ft_lstnew(temp);
+		if (!node)
+		{
+			del (temp);
+			ft_lstclear(&list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&list, node);
+		lst = lst->next;
+	}
+	if (!list)
+		return (NULL);
+	return (list);
+}

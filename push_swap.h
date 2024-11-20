@@ -3,21 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 20:01:36 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/15 14:22:11 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:45:59 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "Libft/libft.h"
+# include "libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
+
+typedef struct s_node
+{
+	int				value;
+	int				pos;
+	struct s_node	*next;
+}		t_node;
 
 // operations:
 void	push(t_node **from, t_node **to, char c);
@@ -50,5 +57,14 @@ int		direction(t_node **base, int z);
 void	smart_push(t_node **base, t_node **out, int z, char c);
 void	sort_algo(t_node **head_a, t_node **head_b, int chunk_size, int i);
 void	sort_b(t_node **head_a, t_node **head_b);
+
+
+//custom linked-list functions diffrent from libft
+int	custom_lstsize(t_node *lst);
+t_node	*custom_lstnew(int content);
+t_node	*custom_lstlast(t_node *lst);
+void	custom_lstadd_back(t_node **lst, t_node *new);
+
+
 
 #endif

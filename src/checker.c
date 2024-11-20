@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:29:01 by tomecker          #+#    #+#             */
-/*   Updated: 2024/05/16 12:14:27 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/19 20:33:31 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	use_operations(char *line, t_node **head_a, t_node **head_b)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 20:01:20 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/14 20:22:32 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:36:32 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	sort_100(t_node **head_a, t_node **head_b, int size)
 {
@@ -48,8 +48,8 @@ void	sort_10(t_node **head_a, t_node **head_b)
 
 	if (*head_a == NULL)
 		return ;
-	size_b = ft_lstsize(*head_b);
-	while (ft_lstsize(*head_a) > 3)
+	size_b = custom_lstsize(*head_b);
+	while (custom_lstsize(*head_a) > 3)
 	{
 		min = INT_MAX;
 		current = *head_a;
@@ -62,7 +62,7 @@ void	sort_10(t_node **head_a, t_node **head_b)
 		smart_push(head_a, head_b, min, 'a');
 	}
 	sort_3(head_a, 'a');
-	while (ft_lstsize(*head_b) > size_b)
+	while (custom_lstsize(*head_b) > size_b)
 		push(head_b, head_a, 'b');
 }
 
@@ -86,7 +86,7 @@ void	sort(t_node **head_a, t_node **head_b)
 
 	if (check_sorted(*head_a) == 1)
 		return ;
-	size = ft_lstsize(*head_a);
+	size = custom_lstsize(*head_a);
 	if (size == 2)
 	{
 		if ((*head_a)->pos > (*head_a)->next->pos)

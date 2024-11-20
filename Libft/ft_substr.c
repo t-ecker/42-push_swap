@@ -6,7 +6,7 @@
 /*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:35:04 by tecker            #+#    #+#             */
-/*   Updated: 2024/03/22 14:17:34 by tecker           ###   ########.fr       */
+/*   Updated: 2024/03/14 22:08:00 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // int main(void)
 // {
 //     char str[] = "0123456789";
-//     printf("%s\n", ft_substr(str, 0, 3));
+//     printf("%s\n", ft_substr(str, 5, 7));
 //     return (0);
 // }

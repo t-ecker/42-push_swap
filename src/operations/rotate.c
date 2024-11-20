@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 20:05:08 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/15 12:08:06 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:41:16 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 void	rotate(t_node **head, char c)
 {
@@ -21,7 +21,7 @@ void	rotate(t_node **head, char c)
 	temp1 = *head;
 	*head = (*head)->next;
 	temp1->next = NULL;
-	ft_lstadd_back(head, temp1);
+	custom_lstadd_back(head, temp1);
 	if (c == 'a')
 		ft_putstr_fd("ra\n", 1);
 	else if (c == 'b')

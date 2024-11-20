@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:59:56 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/14 10:46:20 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:40:25 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_sorted(t_node *head_a)
 {
@@ -35,7 +35,7 @@ int	direction(t_node **base, int z)
 	t_node	*current;
 
 	index = 1;
-	half = ft_lstsize(*base) / 2;
+	half = custom_lstsize(*base) / 2;
 	current = *base;
 	while (current != NULL && current->value != z)
 	{
@@ -104,7 +104,7 @@ void	sort_b(t_node **head_a, t_node **head_b)
 	int		max;
 	t_node	*current;
 
-	while (ft_lstsize(*head_b) > 0)
+	while (custom_lstsize(*head_b) > 0)
 	{
 		max = INT_MIN;
 		current = *head_b;

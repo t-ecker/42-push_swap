@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 23:08:20 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/03 19:25:35 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/03/15 11:37:54 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ char	**ft_split(char const *s, char c)
 // #include <stdio.h>
 // int main(void)
 // {
-//     char *input_string = "1 2 3 4 5 6";
+//     char *input_string = "Hallo";
 // 	// *input_string ;
-//     char delimiter = ' ';
+//     char delimiter = 0;
 //     char **tab;
 // 	tab = ft_split(input_string, delimiter);
 // 	// printf("%s\n", tab);
@@ -98,7 +98,7 @@ char	**ft_split(char const *s, char c)
 //         printf("%s\n", result[i]);
 //         i++;
 //     }
-// 	// printf("%i\n", strlen(result));
+// 	// printf("%s\n", tab[0]);
 //     free(result);
 //     return (0);
 // }

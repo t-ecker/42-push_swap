@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:37:10 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/08 16:05:15 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/03/15 12:04:40 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_node *lst, void (*f)(int))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)
 	{
-		(*f)(lst->value);
+		(*f)(lst->content);
 		lst = lst->next;
 	}
 }

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 13:49:37 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/08 16:03:58 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/03/14 22:12:25 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_node *lst, void (*del)(int))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	(*del)(lst->value);
+	(*del)(lst->content);
 	free(lst);
 }

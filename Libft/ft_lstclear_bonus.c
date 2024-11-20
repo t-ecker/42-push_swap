@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:30:22 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/08 16:05:06 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/03/14 22:12:02 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_node **lst, void (*del)(int))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_node	*temp;
+	t_list	*temp;
 
 	while (*lst)
 	{

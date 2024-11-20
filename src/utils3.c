@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 20:06:14 by tecker            #+#    #+#             */
-/*   Updated: 2024/05/15 13:53:31 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:42:35 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	freelinkedlistandexit(t_node *head, char c)
 {
@@ -62,4 +62,44 @@ int	get_size(char **array)
 	while (array[length] != NULL)
 		length++;
 	return (length);
+}
+
+int	custom_lstsize(t_node *lst)
+{
+	int	counter;
+
+	counter = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		counter++;
+	}
+	return (counter);
+}
+
+t_node	*custom_lstnew(int content)
+{
+	t_node	*ptr;
+
+	ptr = malloc(sizeof(*ptr));
+	if (!ptr)
+		return (NULL);
+	ptr->value = content;
+	ptr->next = NULL;
+	return (ptr);
+}
+t_node	*custom_lstlast(t_node *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+void	custom_lstadd_back(t_node **lst, t_node *new)
+{
+	if (*lst)
+		custom_lstlast(*lst)->next = new;
+	else
+		*lst = new;
 }
