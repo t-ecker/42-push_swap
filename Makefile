@@ -45,6 +45,7 @@ $(LIBFT_DIR):
 	@echo "\n\033[33mAdding Libft submodule...\033[0m"
 	touch .gitmodules
 	git submodule add -f "$(LIBFT_REPO)" $(LIBFT_DIR)
+	git submodule update --init --recursive -q
 	@echo "\033[32mLibft submodule added successfully.\033[0m"
 
 VISUALIZER_REPO = https://github.com/o-reo/push_swap_visualizer.git
