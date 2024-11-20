@@ -38,15 +38,13 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ_FILES) 
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBFT)
 
-$(LIBFT):	$(LIBFT_DIR)
+$(LIBFT):	$(LIBFT_DIR)/.git
 	@make extra -C $(LIBFT_DIR)
 
-$(LIBFT_DIR):
-	@echo "\n\033[33mAdding Libft submodule...\033[0m"
-	touch .gitmodules
-	git submodule add -f "$(LIBFT_REPO)" $(LIBFT_DIR)
-	git submodule update --init --recursive -q
-	@echo "\033[32mLibft submodule added successfully.\033[0m"
+$(LIBFT_DIR)/.git:
+	@echo "\033[33mInitializing Libft submodule...\033[0m"
+	@git submodule update --init
+	@echo "\033[32mLibft submodule initialized.\033[0m"
 
 VISUALIZER_REPO = https://github.com/o-reo/push_swap_visualizer.git
 VISUALIZER_DIR = ./push_swap_visualizer
