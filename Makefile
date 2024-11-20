@@ -35,7 +35,7 @@ all: $(NAME)
 	@$(MAKE) loading
 	clear;
 
-$(NAME): $(LIBFT) $(OBJ_FILES) 
+$(NAME): $(LIBFT) $(OBJ_FILES)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBFT)
 
 $(LIBFT):	$(LIBFT_DIR)/.git
@@ -43,7 +43,7 @@ $(LIBFT):	$(LIBFT_DIR)/.git
 
 $(LIBFT_DIR)/.git:
 	@echo "\033[33mInitializing Libft submodule...\033[0m"
-	@git submodule update --init
+	@git submodule update --init --recursive
 	@echo "\033[32mLibft submodule initialized.\033[0m"
 
 VISUALIZER_REPO = https://github.com/o-reo/push_swap_visualizer.git
@@ -58,6 +58,7 @@ visualizer: $(VISUALIZER_DIR)
 	@mkdir -p $(VISUALIZER_DIR)/build
 	@cd $(VISUALIZER_DIR)/build && cmake .. && make
 	@echo "\033[32mPush Swap Visualizer built successfully.\033[0m"
+	@echo "\n\033[1mTo run the visualizer:\033[0m\n\n\t1. \033[33mNavigate to the build directory:\033[0m\n\t\tcd $(VISUALIZER_DIR)/build\n\n\t2. \033[33mRun the visualizer:\033[0m\n\t\t./bin/visualizer\n"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
