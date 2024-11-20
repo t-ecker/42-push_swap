@@ -1,5 +1,5 @@
 NAME = push_swap
-CHECKER = checker
+NAME_BONUS = checker
 
 LIBFT_REPO = https://github.com/t-ecker/42-Libft.git
 LIBFT_DIR = ./libft
@@ -26,9 +26,10 @@ SRC_BONUS =	./src/checker.c \
 			./src/operations/rotate.c
 
 OBJ_DIR = ./obj
+SRC_DIR = ./src
 
-OBJ_FILES		=	$(patsubst ./src/%.c, $(OBJ_DIR)/%.o, $(SRC))
-OBJ_FILES_BONUS	=	$(patsubst ./src/%.c, $(OBJ_DIR)/%.o, $(SRC_BONUS))
+OBJ_FILES		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+OBJ_FILES_BONUS	=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_BONUS))
 
 all: $(NAME)
 	clear;
@@ -36,7 +37,7 @@ all: $(NAME)
 	clear;
 
 $(NAME): $(LIBFT) $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBFT)
+	$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFT):	$(LIBFT_DIR)/.git
 	@make extra -C $(LIBFT_DIR)
@@ -63,24 +64,24 @@ visualizer: $(VISUALIZER_DIR)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: ./src/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus:	$(CHECKER)
+bonus:	$(NAME_BONUS)
 	clear;
 	@$(MAKE) loading
 	clear;
 
-$(CHECKER):	$(LIBFT) $(OBJ_FILES_BONUS) 
-	$(CC) $(CFLAGS) -o $(CHECKER) $(OBJ_FILES_BONUS) $(LIBFT)
+$(NAME_BONUS):	$(LIBFT) $(OBJ_FILES_BONUS) 
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	@rm -f $(NAME) $(CHECKER)
+	@rm -f $(NAME) $(NAME_BONUS)
 	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
