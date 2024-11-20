@@ -1,7 +1,6 @@
 NAME = push_swap
 NAME_BONUS = checker
 
-LIBFT_REPO = https://github.com/t-ecker/42-Libft.git
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
