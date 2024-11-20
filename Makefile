@@ -39,7 +39,7 @@ $(NAME): $(LIBFT) $(OBJ_FILES)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBFT)
 
 $(LIBFT):	$(LIBFT_DIR)
-	@make -C $(LIBFT_DIR)
+	@make extra -C $(LIBFT_DIR)
 
 $(LIBFT_DIR):
 	@echo "\n\033[33mAdding Libft submodule...\033[0m"
@@ -47,8 +47,21 @@ $(LIBFT_DIR):
 	git submodule add -f "$(LIBFT_REPO)" $(LIBFT_DIR)
 	@echo "\033[32mLibft submodule added successfully.\033[0m"
 
+VISUALIZER_REPO = https://github.com/o-reo/push_swap_visualizer.git
+VISUALIZER_DIR = ./push_swap_visualizer
+
+$(VISUALIZER_DIR):
+	@echo "\n\033[33mAdding Push Swap Visualizer...\033[0m"
+	git clone $(VISUALIZER_REPO) $(VISUALIZER_DIR)
+	@echo "\033[32mPush Swap Visualizer cloned successfully.\033[0m"
+
+visualizer: $(VISUALIZER_DIR)
+	@mkdir -p $(VISUALIZER_DIR)/build
+	@cd $(VISUALIZER_DIR)/build && cmake .. && make
+	@echo "\033[32mPush Swap Visualizer built successfully.\033[0m"
+
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: ./src/%.c | $(OBJ_DIR)
 	@mkdir -p $(@D)
@@ -63,11 +76,11 @@ $(CHECKER):	$(LIBFT) $(OBJ_FILES_BONUS)
 	$(CC) $(CFLAGS) -o $(CHECKER) $(OBJ_FILES_BONUS) $(LIBFT)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -f $(NAME) $(CHECKER)
+	@rm -f $(NAME) $(CHECKER)
 	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
@@ -78,4 +91,4 @@ loading:
 		sleep 0.01; \
 	done
 
-.PHONY: all clean fclean re loading bonus
+.PHONY: all clean fclean re loading bonus visualizer

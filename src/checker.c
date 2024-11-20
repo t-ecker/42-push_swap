@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:29:01 by tomecker          #+#    #+#             */
-/*   Updated: 2024/11/19 20:33:31 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:31:19 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	check_line(char *line)
 void	get_operations(char **final)
 {
 	char	*temp;
+	char 	*tmp2;
 
 	*final = malloc(1 * sizeof(char));
 	if (!(*final))
@@ -100,7 +101,9 @@ void	get_operations(char **final)
 			free(*final);
 			exitwitherror();
 		}
-		*final = ft_strjoin_gnl(*final, temp);
+		tmp2 = *final;
+		*final = ft_strjoin(*final, temp);
+		free(tmp2);
 		free(temp);
 	}
 }
